@@ -1,0 +1,27 @@
+<br/>
+<center><h3>Gateway to Knowledge, Imagination, New Perspectives, and Growth</h3></center>
+<br/>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-2">
+    {{#each books}}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{this.img}}" class="card-img-top" alt="{{this.title}}">
+        <div class="card-body" style="height: 200px;">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p class="card-text">{{this.author}}</p>
+           {{#if this.borrowedBy}}
+            <button type="button" tabindex="0" class="btn btn-lg btn-secondary" role="button"
+ data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="ERROR!"
+            data-bs-content="You can't borrow this book at the moment">On Loan</button>
+          {{else}}
+            <form action="/borrow/{{this._id}}" method="POST">
+              <button class="btn btn-primary">BORROW</button>
+            </form>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
